@@ -124,7 +124,7 @@ app.post("/print-receipt", async (req, res) => {
     const estimatedHeight = 100 + items.length * 20 + 150;
 
     const doc = new PDFDocument({
-      size: [80, estimatedHeight], // 80mm width, dynamic height
+      size: [226.77, estimatedHeight], // 80mm width, dynamic height
       margins: { top: 0, bottom: 0, left: 10, right: 10 },
     });
     console.log(`PDF Dimensions: 226.77x${estimatedHeight}mm`);
@@ -208,15 +208,15 @@ app.post("/print-receipt", async (req, res) => {
       try {
         const printOptions = {
           printer: "EPSON TM-T82 Receipt",
-          paperSize: "80mm x 297mm", // Standard roll paper size
-          marginTop: 0,  // Explicitly set top margin to 0
-          scale: "noscale", // Prevent scaling
-          tearOff: false, // Disable automatic tear-off space
-          offsetTop: -3   // Try negative offset (may vary by printer)
+          // paperSize: "80mm x 297mm", // Standard roll paper size
+          // marginTop: 0,  // Explicitly set top margin to 0
+          // scale: "noscale", // Prevent scaling
+          // tearOff: false, // Disable automatic tear-off space
+          // offsetTop: -3   // Try negative offset (may vary by printer)
         };
         console.log("Sending to printer:", filePath);
-        const newPrint = await printer.print(filePath, { printOptions });
-        console.log("Print result:", newPrint);
+        // const newPrint = await printer.print(filePath, { printOptions });
+        // console.log("Print result:", newPrint);
         
         // fs.unlink(filePath, () => {});
         res.json({ success: true, message: "Receipt printed successfully!" });
